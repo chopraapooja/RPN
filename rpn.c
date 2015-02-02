@@ -1,12 +1,12 @@
 #include <stdlib.h>
 
-typedef char** String;
-int split(String,String**);
+typedef char* String;
+
 
 int evaluate(String expression) {
 	String *splittedExpr;
 	split(expression, &splittedExpr);
-	splittedExpr[i]
+
 }
 
 int split(String expression, String **splitted){

@@ -1,1 +1,1 @@
-int split(String,String**);
+int split(char*,char***);
