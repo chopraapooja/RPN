@@ -12,7 +12,7 @@ int evaluate(String expression) {
 	Stack stack = createStack();
 	int i=0,op1,op2,*result,*answer,*operand;
 	split(expression, &splittedExpr);
-	
+		
 	while((splittedExpr[i] != NULL)) {
 		if(!isOperation(splittedExpr[i])){
 			operand = malloc(sizeof(int));
@@ -56,7 +56,7 @@ int isOperation(String token) {
 
 int split(String expression, String **splitted){
 	String seprator = " ";
-	String *splittedExpr = malloc(sizeof(String*)*10);
+	String *splittedExpr = malloc(sizeof(String*)*20);
 	String token,expr[50];
 	int i=0;
 

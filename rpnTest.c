@@ -49,6 +49,7 @@ void test_split3() {
 	assert(strcmp(splittedExpr[8],"*")==0);
 }
 
+
 void test_split4() {
 	String *splittedExpr;
 	String expression = "";
@@ -64,6 +65,25 @@ void test_split5() {
 	assert(length == 0);
 }
 
+void test_split6() {
+	String *splittedExpr;
+	String expression = "2 2 2 2 2 * * 2 + + 2 - *";
+
+	split(expression, &splittedExpr);
+	assert(strcmp(splittedExpr[0],"2")==0);
+	assert(strcmp(splittedExpr[1],"2")==0);
+	assert(strcmp(splittedExpr[2],"2")==0);
+	assert(strcmp(splittedExpr[3],"2")==0);
+	assert(strcmp(splittedExpr[4],"2")==0);
+	assert(strcmp(splittedExpr[5],"*")==0);
+	assert(strcmp(splittedExpr[6],"*")==0);
+	assert(strcmp(splittedExpr[7],"2")==0);
+	assert(strcmp(splittedExpr[8],"+")==0);
+	assert(strcmp(splittedExpr[9],"+")==0);
+	assert(strcmp(splittedExpr[10],"2")==0);
+	assert(strcmp(splittedExpr[11],"-")==0);
+	assert(strcmp(splittedExpr[12],"*")==0);
+}
 void test_evaluate0() {
 	int result = evaluate("2 3 +");
 	assert(result == 5);
@@ -99,4 +119,21 @@ void test_evaluate6() {
 	int result = evaluate("1 2 3 4 5 * * * *");
 	assert(result == 120);
 }
+
+void test_evaluate7() {
+	int result = evaluate("2 2 2 * 2 - 3 + +");
+	assert(result == 7);
+}
+
+void test_evaluate8() {
+	int result = evaluate("2 2 2 2 2 * * 2 + + 2 - *");
+	assert(result == 20);
+}
+
+void test_evaluate9() {
+	int result = evaluate("2 2 - 2 2 2 * 2 - - -");
+	assert(result == 0);
+}
+
+
 

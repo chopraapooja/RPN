@@ -21,9 +21,11 @@ int push(Stack *stack, void *element) {
 }
 
 void * pop(Stack *stack) {
-	void *element;
+	void *element; Node *prev;
 	if(!stack->top) return NULL;
+	prev = stack->top;
 	element = stack->top->data;
 	stack->top = stack->top->back;
+	free(prev);
 	return element;
 }
