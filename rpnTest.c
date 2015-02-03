@@ -84,3 +84,19 @@ void test_evaluate3() {
 	int result = evaluate("2 3 /");
 	assert(result == 0);
 }
+
+void test_evaluate4() {
+	int result = evaluate("6 3 /");
+	assert(result == 2);
+}
+
+void test_evaluate5() {
+	int result = evaluate("2 3 4 + -");
+	assert(result == -5);
+}
+
+void test_evaluate6() {
+	int result = evaluate("1 2 3 4 5 * * * *");
+	assert(result == 120);
+}
+
