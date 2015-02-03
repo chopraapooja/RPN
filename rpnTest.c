@@ -63,3 +63,24 @@ void test_split5() {
 	int length = split(expression, &splittedExpr);
 	assert(length == 0);
 }
+
+void test_evaluate0() {
+	int result = evaluate("2 3 +");
+	assert(result == 5);
+}
+
+void test_evaluate1() {
+	int result = evaluate("2 3 -");
+	assert(result == -1);
+}
+
+void test_evaluate2() {
+	int result = evaluate("2 3 *");
+	assert(result == 6);
+}
+
+
+void test_evaluate3() {
+	int result = evaluate("2 3 /");
+	assert(result == 0);
+}
