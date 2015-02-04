@@ -1,1 +1,1 @@
-int split(char*,char***);
+int split(char*,char***,char*);
