@@ -6,29 +6,36 @@ typedef char* String;
 int isOperation(String token);
 int operate(int op1, int op2, String operation);
 
+void onOperation(Stack *stack, String operation){
+	int op1, op2, *answer;
+	op1 = *((int*)pop(stack));
+	op2 = *((int*)pop(stack));
 
+	answer = malloc(sizeof(int));
+	*answer = operate(op1,op2,operation);
+	push(stack, answer);
+}
+
+void onOperand(Stack *stack, String operandStr) {
+	int *operand;
+	operand = malloc(sizeof(int));
+	*operand = atoi(operandStr);
+	push(stack, operand);
+}
 
 Status evaluate(String expression) {
-	String *splittedExpr,oper;
+	String *splittedExpr;
 	Stack stack = createStack();
-	int i=0,op1,op2,*result,*answer,*operand;
+	int i=0,*result;
 	Status status;
 	split(expression, &splittedExpr," ");
 		
 	while((splittedExpr[i] != NULL)) {
-		if(!isOperation(splittedExpr[i])){
-			operand = malloc(sizeof(int));
-			*operand = atoi(splittedExpr[i]);
-			push(&stack, operand);
+		if(isOperation(splittedExpr[i])){
+			onOperation(&stack, splittedExpr[i]);
 		}
 		else {
-			op1 = *((int*)pop(&stack));
-			op2 = *((int*)pop(&stack));
-			oper = splittedExpr[i];
-
-			answer = malloc(sizeof(int));
-			*answer = operate(op1,op2,oper);
-			push(&stack, answer);
+			onOperand(&stack,splittedExpr[i]);
 		}
 		i++;
 	}
