@@ -28,52 +28,68 @@ void test_splitting_of_empty_string_with_space_will_give_0() {
 }
 
 void test_evaluate_2_3_plus_is_5() {
-	int result = evaluate("2 3 +");
-	assert(result == 5);
+	Status s = evaluate("2 3 +");
+	assert(s.result == 5);
+	assert(s.error == 0);
 }
 
 void test_evaluate_2_3_minus_is_negative_1() {
-	int result = evaluate("2 3 -");
-	assert(result == -1);
+	Status s = evaluate("2 3 -");
+	assert(s.result == -1);
+	assert(s.error == 0);
 }
 
 void test_evaluate_2_3_multiply_is_6() {
-	int result = evaluate("2 3 *");
-	assert(result == 6);
+	Status s = evaluate("2 3 *");
+	assert(s.result == 6);
+	assert(s.error == 0);
 }
 
 
 void test_evaluate_2_3_divide_is_0() {
-	int result = evaluate("2 3 /");
-	assert(result == 0);
+	Status s = evaluate("2 3 /");
+	assert(s.result == 0);
+	assert(s.error == 0);
 }
 
 void test_evaluate_6_3_divide_is_2() {
-	int result = evaluate("6 3 /");
-	assert(result == 2);
+	Status s = evaluate("6 3 /");
+	assert(s.result == 2);
+	assert(s.error == 0);
 }
 
 void test_evaluate_2_3_4_plus_minus_is_negative_5() {
-	int result = evaluate("2 3 4 + -");
-	assert(result == -5);
+	Status s = evaluate("2 3 4 + -");
+	assert(s.result == -5);
+	assert(s.error == 0);
 }
 
 void test_evaluate6() {
-	int result = evaluate("1 2 3 4 5 * * * *");
-	assert(result == 120);
+	Status s = evaluate("1 2 3 4 5 * * * *");
+	assert(s.result == 120);
+	assert(s.error == 0);
 }
 
 void test_evaluate7() {
-	int result = evaluate("2 2 2 * 2 - 3 + +");
-	assert(result == 7);
+	Status s = evaluate("2 2 2 * 2 - 3 + +");
+	assert(s.result == 7);
+	assert(s.error == 0);
 }
 
 void test_evaluate8() {
-	int result = evaluate("2 2 2 2 2 * * 2 + + 2 - *");
-	assert(result == 20);
+	Status s = evaluate("2 2 2 2 2 * * 2 + + 2 - *");
+	assert(s.result == 20);
+	assert(s.error == 0);
 }
 
 void test_evaluate9() {
-	int result = evaluate("2 2 - 2 2 2 * 2 - - -");
-	assert(result == 0);
+	Status s = evaluate("2 2 - 2 2 2 * 2 - - -");
+	assert(s.result == 0);
+	assert(s.error == 0);
+}
+
+void test_evaluate10() {
+	Status s = evaluate(" 3   2    - ");
+	assert(s.result == 1);
+	assert(s.error == 0);
 }

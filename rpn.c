@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include "stack.h"
+#include "rpn.h"
 
 typedef char* String;
 int isOperation(String token);
@@ -7,10 +8,11 @@ int operate(int op1, int op2, String operation);
 
 
 
-int evaluate(String expression) {
+Status evaluate(String expression) {
 	String *splittedExpr,oper;
 	Stack stack = createStack();
 	int i=0,op1,op2,*result,*answer,*operand;
+	Status status;
 	split(expression, &splittedExpr," ");
 		
 	while((splittedExpr[i] != NULL)) {
@@ -30,8 +32,11 @@ int evaluate(String expression) {
 		}
 		i++;
 	}
+
 	result = (int*)pop(&stack);
-	return *result;
+	status.result = *result;
+	status.error = 0;
+	return status;
 }
 
 int operate(int op1, int op2, String operation) {
