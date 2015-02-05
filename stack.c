@@ -16,8 +16,10 @@ Node* create_node(void *data) {
 int push(Stack *stack, void *element) {
 	Node *node = create_node(element);
 	node->back = stack->top;
+	printf("Stack top was: %p\n", stack->top);
 	stack->top = node;
-	return ++stack->height;
+	printf("Stack top is: %p\n", stack->top);
+	return ++(stack->height);
 }
 
 void * pop(Stack *stack) {
